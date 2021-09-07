@@ -11,11 +11,12 @@ public class WorldPopulation {
 	long[] population = new long[13484]; // Cheating because we know number of records!!
 	// Lab Exercise:  After creating some strategy classes -- set the default strategy here.
 	public WorldPopulation(){
-		sortStrategy = new #; // Set the default strategy here.	
+		sortStrategy = new BubbleSort();	
 	}
 	
 	public void readInputFile(){
-		population = readPopulationFile("src\\WorldPopulation.csv");
+		
+		population = readPopulationFile("WorldPopulation.csv");
 	}
 	
 	public void setStrategy(SortStrategy strategy){
@@ -25,6 +26,7 @@ public class WorldPopulation {
 	// Lab Exercise:  Read in the WorldPopulation.csv
 	// Extract ONLY the numbers and store them into population[]
 	public long[] readPopulationFile(String fileName){
+		
 	  
 		return population;
 	}
@@ -42,10 +44,20 @@ public class WorldPopulation {
 	// Experiment with various strategies.
 	// Create 3 strategies -- Bubble, insertion, and selection sort.
 	public static void main(String[] args) {
-		WorldPopulation worldPopulation = new WorldPopulation();
+		WorldPopulation	worldPopulation = new WorldPopulation();
 		worldPopulation.readInputFile();
-		worldPopulation.setStrategy(#); //  Currently no strategies.
+		worldPopulation.setStrategy(new SelectionSort());
 		worldPopulation.sortPopulation();	
+		
+		worldPopulation = new WorldPopulation();
+		worldPopulation.readInputFile();
+		worldPopulation.setStrategy(new BubbleSort());
+		worldPopulation.sortPopulation();
+		
+		worldPopulation = new WorldPopulation();
+		worldPopulation.readInputFile();
+		worldPopulation.setStrategy(new InsertionSort());
+		worldPopulation.sortPopulation();
 	}
 
 }
